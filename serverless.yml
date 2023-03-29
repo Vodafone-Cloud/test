@@ -1,0 +1,17 @@
+org: andy1110
+app: goodfuckingnews
+
+service: gfnCollector
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ${opt:region, 'us-west-2'}
+  environment: 
+      STAGE: ${opt:stage, 'dev'}
+
+functions:
+  gfnCollector:
+    handler: functions/gfn-collector.collector
